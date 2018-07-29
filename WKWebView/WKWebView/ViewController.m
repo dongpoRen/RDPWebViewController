@@ -42,18 +42,15 @@
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    // http://m.diyring.cc/friend/48bbbb4128a41b27
-    NSString *urlStr = @"http://tu.budejie.com/";
+    NSString *urlStr = @"http://www.baidu.com/";
     NSURL *url = [NSURL URLWithString:urlStr];
-    
     RDPWebViewController *webVC = [[RDPWebViewController alloc] init];
     webVC.url = url;
     [self.navigationController pushViewController:webVC animated:YES];
-
 }
 
 - (void)dealloc {
-    NSLog(@"fdsfds");
+    NSLog(@"%s", __func__);
 }
 
 @end

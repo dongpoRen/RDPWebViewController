@@ -9,7 +9,6 @@
 #import "RDPWebViewController.h"
 #import <WebKit/WebKit.h>
 
-
 @interface RDPWebViewController ()
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backItem;
@@ -29,14 +28,12 @@
    
     WKWebView *webview = [[WKWebView alloc] init];
     _webview = webview;
-
     [self.contentView addSubview:webview];
     
     // 加载webview内容
     NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
     [webview loadRequest:request];
     webview.scrollView.backgroundColor = [UIColor clearColor];
-
 
     // 使用kvo进行监听 back, forward, title, progress
     [_webview addObserver:self forKeyPath:@"canGoBack" options:NSKeyValueObservingOptionNew context:nil];
@@ -54,7 +51,6 @@
     [_webview removeObserver:self forKeyPath:@"estimatedProgress" context:nil];
 }
 
-
 #pragma mark - 监听新值的变化
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     _backItem.enabled = _webview.canGoBack;
@@ -66,7 +62,6 @@
     if (_progressView.progress >= 1) {
         _progressView.hidden = YES;
     }
-    
 }
 
 #pragma mark - 按钮的点击
@@ -77,16 +72,14 @@
 - (IBAction)forwardClick:(id)sender {
     [_webview goForward];
 }
+
 - (IBAction)refresh:(id)sender {
     [_webview reload];
 }
 
-
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     _webview.frame = self.contentView.bounds;
-    
 }
-
 
 @end
