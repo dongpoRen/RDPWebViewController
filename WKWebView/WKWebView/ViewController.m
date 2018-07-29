@@ -32,14 +32,10 @@
  SFSafariViewController *VC = [[SFSafariViewController alloc] initWithURL:url];
  [self.navigationController pushViewController:VC animated:YES];
  
- 
- 
  3. 使用WKWebView:8.0
  导入WebKit/WebKit.h,
  
- 
  */
-
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSString *urlStr = @"http://www.baidu.com/";
